@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Sailing = require('../models/sailing')
+const User = require('../models/user')
 
 //Index
 router.get('/', (req,res)=>{
@@ -30,6 +31,15 @@ router.post('/', (req,res)=>{
         res.json(createdPost)
     })
 })
+
+
+//Create user
+router.post('/createuser',(req,res)=>{
+    User.create(req,body, (err, createdUser)=>{
+        res.json(createdUser)
+    })
+})
+
 
 //Show
 router.get('/:id', (req, res)=>{
